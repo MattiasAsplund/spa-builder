@@ -5,9 +5,9 @@
         fetch("/api/OidcConfiguration")
         .then(result => result.json())
         .then(json => {
-            status = "Did read";
-        
-    })
+            status = "Did read";  
+        })
+    });
 </script>
 
 <h1>Welcome to SvelteKit</h1>
