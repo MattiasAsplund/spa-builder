@@ -2,7 +2,7 @@
     import { onMount } from 'svelte';
     let status = "Have not read";
     onMount(async () => {
-        fetch("/api/OidcConfiguration")
+        fetch("/api/oidc-configuration")
         .then(result => result.json())
         .then(json => {
             status = "Did read";  
