@@ -1,10 +1,13 @@
 <script lang="ts">
+    import { onMount } from 'svelte';
     let status = "Have not read";
-    fetch("/api/OidcConfiguration")
+    onMount(async () => {
+        fetch("/api/OidcConfiguration")
         .then(result => result.json())
         .then(json => {
             status = "Did read";
-        })
+        
+    })
 </script>
 
 <h1>Welcome to SvelteKit</h1>
