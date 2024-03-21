@@ -20,7 +20,7 @@ public class Program
         if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();
-            app.UseSwaggerUI();
+            app.UseSwaggerUI(x => { x.SwaggerEndpoint("v1/swagger.yaml", "My Cool API"); });
         }
 
         app.UseHttpsRedirection();
