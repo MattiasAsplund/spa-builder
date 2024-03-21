@@ -1,6 +1,6 @@
 # Scaffold a .NET / SPA that has "testable security" out-of-the-box
 
-**Prerequite**
+**Prerequisite**
 
 ```sh
 npm install -g degit
