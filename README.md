@@ -12,7 +12,7 @@ npm install -g degit
 degit https://github.com/MattiasAsplund/spa-builder/src/svelte-ts svelte-ts
 ```
 
-** Install frontend dependencies and run backend & frontend **
+**Install frontend dependencies and run backend & frontend**
 
 ```sh
 cd svelte-ts
