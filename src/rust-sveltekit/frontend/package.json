@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"dev": "concurrently --kill-others \"vite dev\" \"cargo run\"",
+		"dev": "concurrently --kill-others \"sleep 3 && vite dev\" \"cargo run\"",
 		"build": "vite build",
 		"preview": "vite preview",
 		"test": "playwright test",
