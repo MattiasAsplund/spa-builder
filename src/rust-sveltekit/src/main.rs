@@ -18,12 +18,12 @@ async fn oidc_configuration() -> Result<impl Responder> {
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    println!("Server is running on http://localhost:8080/");
+    println!("Server is running on http://localhost:8099/");
     HttpServer::new(|| {
         App::new()
             .service(oidc_configuration)
     })
-    .bind("127.0.0.1:8080")?
+    .bind("127.0.0.1:8099")?
     .run()
     .await
 }
