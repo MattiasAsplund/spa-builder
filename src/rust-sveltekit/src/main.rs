@@ -1,4 +1,4 @@
-use actix_web::{web, get, App, HttpServer, Result, Responder};
+use actix_web::{web, route, App, HttpServer, Result, Responder};
 use serde::Serialize;
 
 #[derive(Serialize)]
@@ -7,7 +7,7 @@ struct OidcConfiguration {
     scopes: String,
 }
 
-#[get("/api/OidcConfiguration")]
+#[route("/api/oidc-configuration", method="GET", method="HEAD")]
 async fn oidc_configuration() -> Result<impl Responder> {
     let obj = OidcConfiguration {
         authority: "somecompany".to_string(),
