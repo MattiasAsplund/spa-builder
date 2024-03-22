@@ -25,10 +25,15 @@ cd backend
 degit https://github.com/MattiasAsplund/spa-builder/frontends/sveltekit frontend
 ```
 
-Then we trigger the front- and backend processes from the frontend folder.
+Install the frontend dependencies:
 
 ```sh
 cd frontend
 {packageManager} install
+```
+
+Run the fronent dev script. Both the client and the server process will start, enabling Hot Reload.
+
+```sh
 {packageManager} run dev
 ```
