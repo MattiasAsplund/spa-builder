@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"monitorAndStart": "node monitorAndStart.js",
+		"monitorAndStart": "node monitorAndStart.cjs",
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
