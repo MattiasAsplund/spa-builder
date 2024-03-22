@@ -32,10 +32,10 @@ cd frontend
 {packageManager} install
 ```
 
-Run the frontend dev script. Both the client and the server process will start, enabling Hot Reload.
+Run the monitorAndStart script. The server compiles and starts first. A hot reloaded client follows.
 
 ```sh
 {packageManager} run monitorAndStart
 ```
 
-This waits for the backend to start, before the frontend spins up.
+Make a change in src/routes/+page.svelte and see how the web browser updates upon save. Congratulations, your development environment is up and running!
