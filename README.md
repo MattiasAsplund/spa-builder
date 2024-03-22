@@ -32,7 +32,7 @@ cd frontend
 {packageManager} install
 ```
 
-Run the fronent dev script. Both the client and the server process will start, enabling Hot Reload.
+Run the frontend dev script. Both the client and the server process will start, enabling Hot Reload.
 
 ```sh
 {packageManager} run dev

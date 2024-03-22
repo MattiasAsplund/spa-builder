@@ -17,7 +17,7 @@ public class OidcController : ControllerBase
     }
 
     [HttpGet]
-    [Route("/api/OidcConfiguration")]
+    [Route("/api/oidc-configuration")]
     public OidcConfiguration GetOidcConfiguration()
     {
         var oidcConfiguration = new OidcConfiguration 
