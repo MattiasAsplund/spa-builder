@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Prompt for destination folder choice
 echo "Enter a destination folder:"
 read destination_folder
