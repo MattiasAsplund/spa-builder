@@ -35,5 +35,7 @@ cd frontend
 Run the frontend dev script. Both the client and the server process will start, enabling Hot Reload.
 
 ```sh
-{packageManager} run dev
+{packageManager} run monitorAndStart
 ```
+
+This waits for the backend to start, before the frontend spins up.
