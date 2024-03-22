@@ -30,6 +30,7 @@ public class Program
 
         app.MapControllers();
 
+        Console.WriteLine("Server starting on port 8099...");
         app.Run();
     }
 }
