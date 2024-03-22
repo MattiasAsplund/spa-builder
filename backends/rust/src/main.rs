@@ -23,7 +23,7 @@ async fn main() -> std::io::Result<()> {
         App::new()
             .service(oidc_configuration)
     })
-    .bind("127.0.0.1:8099")?
+    .bind("localhost:8099")?
     .run()
     .await
 }
