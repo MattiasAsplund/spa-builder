@@ -3,5 +3,7 @@
 Scaffold any supported backend framework with any supported frontend framework and start develop in no time!
 
 ```sh
-curl -sL https://github.com/MattiasAsplund/spa-builder/setup.sh | sh
+curl -O https://raw.githubusercontent.com/mattiasasplund/spa-builder/master/setup.sh
+chmod u+x setup.sh
+./setup.sh
 ```
