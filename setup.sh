@@ -1,3 +1,13 @@
+#!/bin/bash
+
+# Check if degit is installed globally
+if ! npm list -g degit 2>/dev/null | grep -q degit; then
+  echo "degit is not installed globally, installing..."
+  npm install -g degit
+else
+  echo "degit is already installed globally."
+fi
+
 echo "Enter a destination folder:"
 read destination_folder
 mkdir "'$destination_folder'"
