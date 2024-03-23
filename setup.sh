@@ -13,8 +13,8 @@ mkdir $destination_folder
 cd $destination_folder
 
 read -p "Backend? nodejs, golang, rust, dotnet: " backend_framework </dev/tty
-degit "https://github.com/mattiasasplund/spa-builder/backends/'$backend_framework'" "backend"
+degit "https://github.com/mattiasasplund/spa-builder/backends/${backend_framework}" "backend"
 cd "backend"
 
 read -p "Frontend? angular, lit, preact, qwik, react, solid, sveltekit, vue: " frontend_framework </dev/tty
-degit "https://github.com/mattiasasplund/spa-builder/frontends/'$frontend_framework" "frontend"
+degit "https://github.com/mattiasasplund/spa-builder/frontends/${frontend_framework}" "frontend"
