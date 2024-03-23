@@ -12,8 +12,7 @@ read -p "Enter a destination folder: " destination_folder </dev/tty
 mkdir "'$destination_folder'"
 cd "'$destination_folder'"
 
-echo "Enter a backend framework from the following list:"
-read -p "Backend? nodejs, golang, rust, dotnet, gleam: " backend_framework </dev/tty
+read -p "Backend? nodejs, golang, rust, dotnet: " backend_framework </dev/tty
 degit "https://github.com/mattiasasplund/spa-builder/backends/'$backend_framework'" "backend"
 cd "backend"
 
