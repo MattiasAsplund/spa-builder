@@ -8,19 +8,14 @@ else
   echo "degit is already installed globally."
 fi
 
-read -p "Enter a destination folder: " input </dev/tty
-mkdir "'$input'"
-cd "'$input'"
+read -p "Enter a destination folder: " destination_folder </dev/tty
+mkdir "'$destination_folder'"
+cd "'$destination_folder'"
 
 echo "Enter a backend framework from the following list:"
-echo "nodejs, golang, rust, dotnet, gleam"
-read backend_framework
-echo "You have selected the backend framework: $backend_framework"
+read -p "Backend? nodejs, golang, rust, dotnet, gleam: " backend_framework </dev/tty
 degit "https://github.com/mattiasasplund/spa-builder/backends/'$backend_framework'" "backend"
 cd "backend"
 
-echo "Enter a frontend framework from the following list:"
-echo "angular, lit, preact, qwik, react, solid, sveltekit, vue"
-read frontend_framework
-echo "You have selected the frontend framework: $frontend_framework"
+echo "Frontend? angular, lit, preact, qwik, react, solid, sveltekit, vue: " frontend_framework </dev/tty
 degit "https://github.com/mattiasasplund/spa-builder/frontends/'$frontend_framework" "frontend"
