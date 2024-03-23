@@ -8,7 +8,7 @@ else
   echo "degit is already installed globally."
 fi
 
-read -p "Enter a destination folder: " input </div/tty
+read -p "Enter a destination folder: " input < /dev/tty
 mkdir "'$input'"
 cd "'$input'"
 
