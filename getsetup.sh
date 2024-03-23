@@ -13,7 +13,7 @@ curl -o "$unique_filename" "$script_url"
 chmod +x "$unique_filename"
 
 # Execute the downloaded script
-./"$unique_filename"
+"$unique_filename"
 
 rm "$unique_filename"
 
