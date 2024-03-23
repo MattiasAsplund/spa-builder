@@ -8,10 +8,9 @@ else
   echo "degit is already installed globally."
 fi
 
-echo "Enter a destination folder:"
-read destination_folder
-mkdir "'$destination_folder'"
-cd "'$destination_folder'"
+read -p "Enter a destination folder: " input </div/tty
+mkdir "'$input'"
+cd "'$input'"
 
 echo "Enter a backend framework from the following list:"
 echo "nodejs, golang, rust, dotnet, gleam"
