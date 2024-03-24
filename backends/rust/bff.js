@@ -1,7 +1,7 @@
 const { exec, spawn } = require('child_process');
 
-console.log("Installing backend dependencies...")
-exec("npm install", (error, stdout, stderr) => {
+console.log("Installing backend dependencies, will run after that...");
+exec("cargo run", (error, stdout, stderr) => {
 
     let childProcess = spawn("node", ["server.js"]);
 
@@ -18,4 +18,3 @@ exec("npm install", (error, stdout, stderr) => {
     });
         
 });
-
