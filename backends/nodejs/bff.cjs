@@ -1,9 +1,9 @@
 const { exec, spawn } = require('child_process');
 
 console.log("Installing backend dependencies...")
-exec("npm install", (error, stdout, stderr) => {
+exec("npm install", { cwd: '..' }, (error, stdout, stderr) => {
 
-    let childProcess = spawn("node", ["server.js"]);
+    let childProcess = spawn("node", ["server.js"], { cwd: '..' });
 
     childProcess.stdout.on('data', (data) => {
         console.log(`stdout: ${data}`);
