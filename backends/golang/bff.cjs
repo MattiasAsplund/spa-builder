@@ -1,3 +1,5 @@
+const { exec, spawn } = require('child_process');
+
 console.log("Installing backend dependencies, will run after that...")
 exec("go run main.go", (error, stdout, stderr) => {
 
