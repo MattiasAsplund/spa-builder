@@ -1,5 +1,5 @@
-# Scaffold a backend and frontend framework
+# Scaffold a solution with cherry-picked backend and frontend frameworks
 
 ```sh
-curl https://raw.githubusercontent.com/MattiasAsplund/spa-builder/master/setup.sh | sh
+npx spa-bulder-wizard
 ```
