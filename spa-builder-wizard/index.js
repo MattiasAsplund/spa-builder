@@ -10,7 +10,7 @@ var npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
 async function mainMenu() {
     console.log('Welcome to SPA Builder Wizard (alpha)\n');
 
-    const folderName = await input({ message: 'Destination folder: ' });
+    cp.process.env.SOLUTION_DIR = await input({ message: 'Destination folder: ' });
 
     inquirer.prompt([
         {
@@ -42,7 +42,7 @@ async function mainMenu() {
                 ]
             }
         ]).then((frontendAnswers) => {
-            console.log(`---> ${folderName} ${backendAnswers.mainChoice} ${frontendAnswers.mainChoice} <---`);
+            console.log(`---> ${process.env.SOLUTION_DIR} ${backendAnswers.mainChoice} ${frontendAnswers.mainChoice} <---`);
 
             const backendEmitter = degit(`https://github.com/mattiasasplund/spa-builder/backends/${backendAnswers.mainChoice}#main`, {
                 cache: false,
@@ -54,7 +54,7 @@ async function mainMenu() {
                 console.log(info.message);
             });
             
-            backendEmitter.clone(`${folderName}/backend`).then(() => {
+            backendEmitter.clone(`${process.env.SOLUTION_DIR}/backend`).then(() => {
                 console.log('done');
             });
 
@@ -68,13 +68,13 @@ async function mainMenu() {
                 console.log(info.message);
                 console.log("Dependencies have been installed.");
                 console.log("To run the solution:");
-                console.log(`  cd ${folderName}/backend/frontend`);
+                console.log(`  cd ${process.env.SOLUTION_DIR}/backend/frontend`);
                 console.log("  npm run monitorAndStart");
             });
             
             frontendEmitter.clone(`${folderName}/backend/frontend`).then(() => {
                 const result = cp.spawnSync( npm, ['install'], {
-                    cwd: `${folderName}/backend/frontend`
+                    cwd: `${process.env.SOLUTION_DIR}/backend/frontend`
                 });
             });
         });
