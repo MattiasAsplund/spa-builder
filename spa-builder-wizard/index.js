@@ -3,6 +3,8 @@
 import inquirer from 'inquirer';
 import input from '@inquirer/input';
 import degit from 'degit';
+import * as cp from 'child_process';
+var npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
 
 async function mainMenu() {
     console.log('Welcome to SPA Builder Wizard (alpha)\n');
@@ -41,8 +43,8 @@ async function mainMenu() {
         ]).then((frontendAnswers) => {
             console.log(`---> ${folderName} ${backendAnswers.mainChoice} ${frontendAnswers.mainChoice} <---`);
 
-            const backendEmitter = degit(`https://github.com/mattiasasplund/spa-builder/backends/${backendAnswers.mainChoice}`, {
-                cache: true,
+            const backendEmitter = degit(`https://github.com/mattiasasplund/spa-builder/backends/${backendAnswers.mainChoice}#main`, {
+                cache: false,
                 force: true,
                 verbose: true,
             });
@@ -55,20 +57,25 @@ async function mainMenu() {
                 console.log('done');
             });
 
-            const frontendEmitter = degit(`https://github.com/mattiasasplund/spa-builder/frontends/${frontendAnswers.mainChoice}`, {
-                cache: true,
+            const frontendEmitter = degit(`https://github.com/mattiasasplund/spa-builder/frontends/${frontendAnswers.mainChoice}#main`, {
+                cache: false,
                 force: true,
                 verbose: true,
             });
             
             frontendEmitter.on('info', info => {
                 console.log(info.message);
+                console.log("Dependencies have been installed.");
+                console.log("To run the solution:");
+                console.log(`  cd ${folderName}/backend/frontend`);
+                console.log("  npm run monitorAndStart");
             });
             
             frontendEmitter.clone(`${folderName}/backend/frontend`).then(() => {
-                console.log('done');
+                const result = cp.spawnSync( npm, ['install'], {
+                    cwd: `${folderName}/backend/frontend`
+                });
             });
-
         });
     });
 }
