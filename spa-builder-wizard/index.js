@@ -3,6 +3,8 @@
 import inquirer from 'inquirer';
 import input from '@inquirer/input';
 import degit from 'degit';
+import process from 'process';
+
 import * as cp from 'child_process';
 
 var npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
@@ -10,7 +12,7 @@ var npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
 async function mainMenu() {
     console.log('Welcome to SPA Builder Wizard (alpha)\n');
 
-    cp.process.env.SOLUTION_DIR = await input({ message: 'Destination folder: ' });
+    process.env.SOLUTION_DIR = await input({ message: 'Destination folder: ' });
 
     inquirer.prompt([
         {
@@ -72,7 +74,7 @@ async function mainMenu() {
                 console.log("  npm run monitorAndStart");
             });
             
-            frontendEmitter.clone(`${folderName}/backend/frontend`).then(() => {
+            frontendEmitter.clone(`${process.env.SOLUTION_DIR}/backend/frontend`).then(() => {
                 const result = cp.spawnSync( npm, ['install'], {
                     cwd: `${process.env.SOLUTION_DIR}/backend/frontend`
                 });
