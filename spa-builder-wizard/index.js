@@ -4,6 +4,7 @@ import inquirer from 'inquirer';
 import input from '@inquirer/input';
 import degit from 'degit';
 import * as cp from 'child_process';
+
 var npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
 
 async function mainMenu() {
