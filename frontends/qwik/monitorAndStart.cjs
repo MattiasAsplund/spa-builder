@@ -1,7 +1,7 @@
 const { spawn } = require('child_process');
 
 // Start command1
-const command1 = spawn('node', ['../bff.mjs'], { shell: true, stdio: ['inherit', 'pipe', 'pipe'] });
+const command1 = spawn('node', ['../bff.js'], { shell: true, stdio: ['inherit', 'pipe', 'pipe'] });
 
 const onDataHandler = (data) => {
   const dataStr = data.toString();
