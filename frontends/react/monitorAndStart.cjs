@@ -1,21 +1,29 @@
-const { spawn, exec } = require('child_process');
+import exec from 'child_process';
+import util from 'util';
 
-// Start command1
-const command1 = spawn('node', ['../bff.cjs'], { shell: true, stdio: ['inherit', 'pipe', 'pipe'] });
+// Promisify the exec function to use it with async/await
+const execAsync = util.promisify(exec);
 
-const onDataHandler = (data) => {
-  const dataStr = data.toString();
-  console.log(dataStr); // Log the message (remove the xcommand1 prefix if not needed)
-  if (dataStr.includes('Server starting on port 8099...')) {
-    exec('npm install');
-    exec('npm run dev');
+async function runCommands() {
+  try {
+    // 1) Run 'node ../bff.cjs'
+    console.log('Running: node ../bff.cjs');
+    await execAsync('node ../bff.cjs');
+    console.log('Completed: node ../bff.cjs');
+
+    // 2) Run 'npm install'
+    console.log('Running: npm install');
+    await execAsync('npm install');
+    console.log('Completed: npm install');
+
+    // 3) Run 'npm run dev'
+    console.log('Running: npm run dev');
+    await execAsync('npm run dev');
+    console.log('Completed: npm run dev');
+  } catch (error) {
+    // Error handling
+    console.error(`Error executing command: ${error}`);
   }
-};
+}
 
-// Listen to both stdout and stderr
-command1.stdout.on('data', onDataHandler);
-command1.stderr.on('data', onDataHandler);
-
-command1.on('close', (code) => {
-  console.log(`command1 exited with code ${code}`);
-});
+runCommands();
