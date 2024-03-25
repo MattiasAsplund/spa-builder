@@ -1,4 +1,8 @@
-const { exec, spawn } = require('child_process');
+console.log("Installing backend dependencies...")
+const { spawn } = require('child_process');
 
-console.log("Installing backend dependencies...");
-exec("cargo run", { stdio: 'inherit', cwd: '..' });
+const runBff = (async () => {
+    const serverProcess = spawn("cargo", ["run"], { stdio: 'inherit', cwd: '..' });
+})
+
+runBff();

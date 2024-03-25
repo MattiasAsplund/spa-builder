@@ -1,5 +1,8 @@
-import { exec } from 'child-process';
-
 console.log("Installing backend dependencies...")
-exec("dotnet", ["run"], { cwd: '..' }, (error, stdout, stderr) => {        
-});
+const { spawn } = require('child_process');
+
+const runBff = (async () => {
+    const serverProcess = spawn("dotnet", ["run"], { stdio: 'inherit', cwd: '..' });
+})
+
+runBff();

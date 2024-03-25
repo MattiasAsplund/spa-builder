@@ -1,5 +1,8 @@
-const { exec, spawn } = require('child_process');
-
 console.log("Installing backend dependencies...")
-exec("go", ["run", "main.go"], { cwd: '..' }, (error, stdout, stderr) => {        
-});
+const { spawn } = require('child_process');
+
+const runBff = (async () => {
+    const serverProcess = spawn("go", ["run", "main.go"], { stdio: 'inherit', cwd: '..' });
+})
+
+runBff();
