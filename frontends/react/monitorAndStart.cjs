@@ -9,6 +9,7 @@ const onDataHandler = (data) => {
   if (dataStr.includes('Server starting on port 8099...')) {
     // Start command2
     console.log("Starting command");
+    spawn('npm', ['install'], { shell: true, stdio: 'inherit' });
     spawn('npm', ['run', 'dev'], { shell: true, stdio: 'inherit' });
   }
 };
