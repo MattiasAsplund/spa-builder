@@ -4,8 +4,10 @@ import inquirer from 'inquirer';
 import input from '@inquirer/input';
 import degit from 'degit';
 import process from 'process';
+import { exec } from 'child_process';
+import util from 'util';
 
-import * as cp from 'child_process';
+const execAsync = util.promisify(exec);
 
 var npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
 
@@ -61,6 +63,9 @@ async function mainMenu() {
 
     await frontendEmitter.clone(`backend/frontend`);
     console.log('Frontend cloning done.');    
+
+    await execAsync("npm run monitorAndStart", { cwd: 'backend/frontend' });
+
 }
 
 (async () => {
