@@ -1,4 +1,4 @@
-import exec from 'child_process';
+import { exec } from 'child_process';
 import util from 'util';
 
 // Promisify the exec function to use it with async/await
