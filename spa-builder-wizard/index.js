@@ -4,7 +4,7 @@ import inquirer from 'inquirer';
 import input from '@inquirer/input';
 import degit from 'degit';
 import process from 'process';
-import { exec } from 'child_process';
+import { exec, execSync } from 'child_process';
 import util from 'util';
 
 const execAsync = util.promisify(exec);
@@ -64,7 +64,7 @@ async function mainMenu() {
     await frontendEmitter.clone(`backend/frontend`);
     console.log('Frontend cloning done.');    
 
-    await execAsync("npm run monitorAndStart", { cwd: 'backend/frontend' });
+    execSync("npm start", { stdio: 'inherit', cwd: 'backend/frontend' });
 
 }
 
