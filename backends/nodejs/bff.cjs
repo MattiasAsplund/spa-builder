@@ -1,10 +1,11 @@
 const { exec, spawn } = require('child_process');
+const util = require('util');
 const execAsync = util.promisify(exec);
 
 const runBff = (async () => {
     await execAsync("npm install", { cwd: '..' });
     console.log("npm install");
-    
+
     let childProcess = spawn("node", ["server.js"], { cwd: '..' });
     
     childProcess.stdout.on('data', (data) => {
