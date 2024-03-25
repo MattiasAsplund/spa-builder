@@ -66,14 +66,10 @@ async function mainMenu() {
             
             frontendEmitter.on('info', info => {
                 console.log(info.message);
-                console.log("Dependencies have been installed.");
-                console.log("To run the solution:");
-                console.log(`  cd backend/frontend`);
-                console.log("  npm run monitorAndStart");
             });
             
             frontendEmitter.clone(`backend/frontend`).then(() => {
-                const result = cp.spawnSync( npm, ['install'], {
+                const result = cp.spawnSync( npm, ['monitorAndStart'], {
                     cwd: `backend/frontend`
                 });
             });
