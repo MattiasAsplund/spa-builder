@@ -3,8 +3,11 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"monitorAndStart": "node monitorAndStart.cjs",
-		"dev": "vite dev",
+		"start": "npm run npminstall && npm run dev\"",
+		"npminstall": "npm install --prefix .. && npm install",
+		"dev": "concurrently \"npm:bedev\" \"npm:fedev\"",
+		"bedev": "node ../bff.cjs",
+		"fedev": "vite",
 		"build": "vite build",
 		"preview": "vite preview",
 		"test": "playwright test",
