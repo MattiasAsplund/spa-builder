@@ -13,6 +13,7 @@
     "preview": "serve dist"
   },
   "devDependencies": {
+    "concurrently": "^8.2.2",
     "serve": "^14.2.1",
     "typescript": "^5.2.2",
     "vite": "^5.2.0"
