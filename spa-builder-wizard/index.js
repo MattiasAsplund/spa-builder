@@ -12,7 +12,7 @@ var npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
 async function mainMenu() {
     console.log('Welcome to SPA Builder Wizard (alpha)\n');
 
-    inquirer.prompt([
+    const backendAnswers = await inquirer.prompt([
         {
             type: 'list',
             name: 'mainChoice',
@@ -24,8 +24,9 @@ async function mainMenu() {
                 'rust'
             ]
         }
-    ]).then((backendAnswers) => {
-        inquirer.prompt([
+    ]);
+
+    const frontendAnswers = await inquirer.prompt([
             {
                 type: 'list',
                 name: 'mainChoice',
@@ -41,40 +42,25 @@ async function mainMenu() {
                     'vue',
                 ]
             }
-        ]).then((frontendAnswers) => {
-            console.log(`---> ${backendAnswers.mainChoice} ${frontendAnswers.mainChoice} <---`);
+        ]);
 
-            const backendEmitter = degit(`https://github.com/mattiasasplund/spa-builder/backends/${backendAnswers.mainChoice}#main`, {
-                cache: false,
-                force: true,
-                verbose: true,
-            });
-            
-            backendEmitter.on('info', info => {
-                console.log(info.message);
-            });
-            
-            backendEmitter.clone(`backend`).then(() => {
-                console.log('done');
-            });
-
-            const frontendEmitter = degit(`https://github.com/mattiasasplund/spa-builder/frontends/${frontendAnswers.mainChoice}#main`, {
-                cache: false,
-                force: true,
-                verbose: true,
-            });
-            
-            frontendEmitter.on('info', info => {
-                console.log(info.message);
-            });
-            
-            frontendEmitter.clone(`backend/frontend`).then(() => {
-                const result = cp.spawnSync( npm, ['run', 'monitorAndStart'], {
-                    cwd: `backend/frontend`
-                });
-            });
-        });
+    const backendEmitter = degit(`https://github.com/mattiasasplund/spa-builder/backends/${backendAnswers.mainChoice}#main`, {
+        cache: false,
+        force: true,
+        verbose: true,
     });
+
+    await backendEmitter.clone('backend');
+    console.log("Backend cloning done.");
+
+    const frontendEmitter = degit(`https://github.com/mattiasasplund/spa-builder/frontends/${frontendAnswers.mainChoice}#main`, {
+        cache: false,
+        force: true,
+        verbose: true,
+    });
+
+    await frontendEmitter.clone(`backend/frontend`);
+    console.log('Frontend cloning done.');    
 }
 
 (async () => {

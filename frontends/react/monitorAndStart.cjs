@@ -1,5 +1,5 @@
-import { exec } from 'child_process';
-import util from 'util';
+const { exec } = require('child_process');
+const util = require('util');
 
 // Promisify the exec function to use it with async/await
 const execAsync = util.promisify(exec);
