@@ -1,7 +1,7 @@
 {
   "name": "spa-builder-wizard",
-  "version": "1.0.10",
-  "description": "Builds a boilerplate backend/SPA solution",
+  "version": "1.0.11",
+  "description": "backend + frontend => hot reload solution",
   "type": "module",
   "main": "index.js",
   "bin": {
