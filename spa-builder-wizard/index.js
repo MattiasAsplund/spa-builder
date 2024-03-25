@@ -69,7 +69,7 @@ async function mainMenu() {
             });
             
             frontendEmitter.clone(`backend/frontend`).then(() => {
-                const result = cp.spawnSync( npm, ['monitorAndStart'], {
+                const result = cp.spawnSync( npm, ['run', 'monitorAndStart'], {
                     cwd: `backend/frontend`
                 });
             });
